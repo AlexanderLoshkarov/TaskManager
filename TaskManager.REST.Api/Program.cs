@@ -1,6 +1,6 @@
-using Microsoft.EntityFrameworkCore;
-using System.Threading;
+using System.Reflection;
 using TaskManager.Console.EFCore;
+using TaskManager.REST.Api.Tickets;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -12,6 +12,10 @@ builder.Services.AddCors(options =>
 {
   options.AddDefaultPolicy(builder => builder.AllowAnyOrigin().AllowAnyMethod().AllowAnyHeader());
 });
+
+builder.Services.AddDbContext<TaskManagerDbContext>();
+
+builder.Services.AddMediatR(cfg => cfg.RegisterServicesFromAssemblies(Assembly.GetExecutingAssembly()));
 
 var app = builder.Build();
 
@@ -25,30 +29,6 @@ if (app.Environment.IsDevelopment())
 
 app.UseHttpsRedirection();
 
-app.MapGet("/tickets", async () =>
-{
-  using var _dbContext = new TaskManagerDbContext();
-  var tickets = await _dbContext.Tickets.ToArrayAsync();
-
-  var ticketsResponse = tickets.Select(ticket => new TicketResponse(
-    ticket.Id, 
-    ticket.Title, 
-    ticket.Description, 
-    ticket.TicketStatus, 
-    ticket.CreatedAt, 
-    ticket.User?.UserName)
-  ).ToArray();
-
-  return ticketsResponse;
-});
+app.MapGetAllTickets();
 
 app.Run();
-
-public record TicketResponse(
-  string Id, 
-  string Title, 
-  string? Description, 
-  TicketStatus TicketStatus, 
-  DateTime CreatedAt, 
-  string? UserName
-);
