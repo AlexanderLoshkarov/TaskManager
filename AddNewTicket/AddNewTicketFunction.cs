@@ -28,7 +28,7 @@ namespace AddNewTicket
 
       Guid id = await _mediator.Send(new AddNewTicketRequest("New Ticket Test1", "Description of Test ticket"));
 
-      return new CreatedResult("/ticket/", id);
+      return new CreatedResult($"/tickets/{id}/", id);
     }
   }
 }
