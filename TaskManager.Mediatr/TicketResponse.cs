@@ -1,6 +1,6 @@
 ﻿using TaskManager.Console.EFCore;
 
-namespace TaskManager.REST.Api.Tickets
+namespace TaskManager.Mediatr
 {
   public record TicketResponse(
   string Id,

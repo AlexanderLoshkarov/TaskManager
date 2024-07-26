@@ -11,7 +11,11 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution 
 		.gitignore = .gitignore
 	EndProjectSection
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TaskManager.REST.Api", "TaskManager.REST.Api\TaskManager.REST.Api.csproj", "{E0D91266-CAF9-4293-8DB1-D25C31B4C6A9}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TaskManager.REST.Api", "TaskManager.REST.Api\TaskManager.REST.Api.csproj", "{E0D91266-CAF9-4293-8DB1-D25C31B4C6A9}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AddNewTicket", "AddNewTicket\AddNewTicket.csproj", "{F4A2BAC6-DA08-43C6-94E9-28531A0BBB3C}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TaskManager.Mediatr", "TaskManager.Mediatr\TaskManager.Mediatr.csproj", "{58F0D7F8-0D81-43DD-B053-29A0659199E3}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -27,6 +31,14 @@ Global
 		{E0D91266-CAF9-4293-8DB1-D25C31B4C6A9}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{E0D91266-CAF9-4293-8DB1-D25C31B4C6A9}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{E0D91266-CAF9-4293-8DB1-D25C31B4C6A9}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F4A2BAC6-DA08-43C6-94E9-28531A0BBB3C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F4A2BAC6-DA08-43C6-94E9-28531A0BBB3C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F4A2BAC6-DA08-43C6-94E9-28531A0BBB3C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F4A2BAC6-DA08-43C6-94E9-28531A0BBB3C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{58F0D7F8-0D81-43DD-B053-29A0659199E3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{58F0D7F8-0D81-43DD-B053-29A0659199E3}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{58F0D7F8-0D81-43DD-B053-29A0659199E3}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{58F0D7F8-0D81-43DD-B053-29A0659199E3}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

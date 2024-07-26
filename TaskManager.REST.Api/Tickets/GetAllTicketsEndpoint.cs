@@ -1,4 +1,5 @@
 ﻿using MediatR;
+using TaskManager.Mediatr;
 
 namespace TaskManager.REST.Api.Tickets
 {

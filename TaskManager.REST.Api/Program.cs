@@ -1,4 +1,3 @@
-using System.Reflection;
 using TaskManager.Console.EFCore;
 using TaskManager.REST.Api.Tickets;
 
@@ -15,7 +14,7 @@ builder.Services.AddCors(options =>
 
 builder.Services.AddDbContext<TaskManagerDbContext>();
 
-builder.Services.AddMediatR(cfg => cfg.RegisterServicesFromAssemblies(Assembly.GetExecutingAssembly()));
+builder.Services.AddMediatR(cfg => cfg.RegisterServicesFromAssemblies(AppDomain.CurrentDomain.Load("TaskManager.Mediatr")));
 
 var app = builder.Build();
 
