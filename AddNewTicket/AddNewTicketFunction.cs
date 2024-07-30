@@ -7,6 +7,7 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.Extensions.Logging;
 using MediatR;
 using TaskManager.Mediatr;
+using Newtonsoft.Json;
 
 namespace AddNewTicket
 {
@@ -26,7 +27,9 @@ namespace AddNewTicket
     {
       log.LogInformation("Adding New Ticket");
 
-      Guid id = await _mediator.Send(new AddNewTicketRequest("New Ticket Test1", "Description of Test ticket"));
+      AddNewTicketRequest newTicketRequest = JsonConvert.DeserializeObject<AddNewTicketRequest>(await req.ReadAsStringAsync());
+
+      Guid id = await _mediator.Send(newTicketRequest);
 
       return new CreatedResult($"/tickets/{id}/", id);
     }
