@@ -1,5 +1,8 @@
+using FluentValidation;
 using TaskManager.Console.EFCore;
 using TaskManager.REST.Api.Tickets;
+
+var assembly = AppDomain.CurrentDomain.Load("TaskManager.Mediatr");
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -13,8 +16,9 @@ builder.Services.AddCors(options =>
 });
 
 builder.Services.AddDbContext<TaskManagerDbContext>();
+builder.Services.AddValidatorsFromAssembly(assembly);
 
-builder.Services.AddMediatR(cfg => cfg.RegisterServicesFromAssemblies(AppDomain.CurrentDomain.Load("TaskManager.Mediatr")));
+builder.Services.AddMediatR(cfg => cfg.RegisterServicesFromAssemblies(assembly));
 
 var app = builder.Build();
 

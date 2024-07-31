@@ -2,5 +2,5 @@
 
 namespace TaskManager.Mediatr
 {
-  public record GetAllTicketsQuery : IRequest<IEnumerable<TicketResponse>>;
+  public record GetAllTicketsQuery : IRequest<Result<IEnumerable<TicketResponse>>>;
 }

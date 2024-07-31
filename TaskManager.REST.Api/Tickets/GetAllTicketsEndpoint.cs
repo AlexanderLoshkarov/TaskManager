@@ -9,9 +9,14 @@ namespace TaskManager.REST.Api.Tickets
     {
       app.MapGet("/tickets", async (IMediator mediator) =>
       {
-        IEnumerable<TicketResponse> response = await mediator.Send(new GetAllTicketsQuery());
+        Result<IEnumerable<TicketResponse>> result = await mediator.Send(new GetAllTicketsQuery());
 
-        return response.ToArray();
+        if (result.IsFailure)
+        {
+          return Results.BadRequest(result.Error);
+        }
+
+        return Results.Ok(result.Value.ToArray());
       });
 
       return app;

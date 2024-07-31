@@ -29,9 +29,14 @@ namespace AddNewTicket
 
       AddNewTicketRequest newTicketRequest = JsonConvert.DeserializeObject<AddNewTicketRequest>(await req.ReadAsStringAsync());
 
-      Guid id = await _mediator.Send(newTicketRequest);
+      Result<Guid> result = await _mediator.Send(newTicketRequest);
 
-      return new CreatedResult($"/tickets/{id}/", id);
+      if (result.IsFailure)
+      {
+        return new BadRequestObjectResult(result.Error);
+      }
+
+      return new CreatedResult($"/tickets/{result.Value}/", result.Value);
     }
   }
 }

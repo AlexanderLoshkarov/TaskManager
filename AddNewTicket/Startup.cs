@@ -1,4 +1,5 @@
-﻿using Microsoft.Azure.Functions.Extensions.DependencyInjection;
+﻿using FluentValidation;
+using Microsoft.Azure.Functions.Extensions.DependencyInjection;
 using Microsoft.Extensions.DependencyInjection;
 using System;
 using TaskManager.Console.EFCore;
@@ -11,7 +12,10 @@ public class Startup : FunctionsStartup
 {
   public override void Configure(IFunctionsHostBuilder builder)
   {
+    var assembly = AppDomain.CurrentDomain.Load("TaskManager.Mediatr");
+
     builder.Services.AddDbContext<TaskManagerDbContext>();
-    builder.Services.AddMediatR(cfg => cfg.RegisterServicesFromAssemblies(AppDomain.CurrentDomain.Load("TaskManager.Mediatr")));
+    builder.Services.AddValidatorsFromAssembly(assembly);
+    builder.Services.AddMediatR(cfg => cfg.RegisterServicesFromAssemblies(assembly));
   }
 }
