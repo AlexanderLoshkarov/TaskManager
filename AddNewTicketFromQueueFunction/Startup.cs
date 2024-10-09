@@ -4,9 +4,9 @@ using Microsoft.Extensions.DependencyInjection;
 using System;
 using TaskManager.Console.EFCore;
 
-[assembly: FunctionsStartup(typeof(AddNewTicket.Startup))]
+[assembly: FunctionsStartup(typeof(AddNewTicketFromQueueFunction.Startup))]
 
-namespace AddNewTicket;
+namespace AddNewTicketFromQueueFunction;
 
 public class Startup : FunctionsStartup
 {
